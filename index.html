@@ -7,25 +7,42 @@
     <title>Document</title>
 </head>
 <body>
-    <div>
-        <h1 id="timer">25:00</h1>
-        
-        <strong>Time to study</strong>
-        <hr>
-        
-        <button onclick="click_button(this)" class="buttton-study">START</button>
-    </div>
+
+    <main>
+        <div>
+            <strong  style="display: flex; align-items: center; gap: 8px; justify-content: space-around;">
+            <svg style="height: 25px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M224 112c-8.8 0-16-7.2-16-16V80c0-44.2 35.8-80 80-80h16c8.8 0 16 7.2 16 16V32c0 44.2-35.8 80-80 80H224zM0 288c0-76.3 35.7-160 112-160c27.3 0 59.7 10.3 82.7 19.3c18.8 7.3 39.9 7.3 58.7 0c22.9-8.9 55.4-19.3 82.7-19.3c76.3 0 112 83.7 112 160c0 128-80 224-160 224c-16.5 0-38.1-6.6-51.5-11.3c-8.1-2.8-16.9-2.8-25 0c-13.4 4.7-35 11.3-51.5 11.3C80 512 0 416 0 288z"/></svg>
+               pomodoro
+            </strong>
+            <h1 id="timer">25:00</h1>
+            <strong>Time to study</strong><br>
+            <button onclick="click_button(this)" class="buttton-study">START</button>
+        </div>
+    </main>
+   
 </body>
 </html>
 
 <style>
+
     body {
-        min-height: 196px;
-        padding: 10px;
-        margin: 0;
         box-sizing: border-box;
-        max-width: 164px;
+        padding: 0;
+        margin: 0;
+       
+    }
+    main {
+       
+        min-height: 196px;
+        padding: 20px;
+        margin: auto;
+        max-width: 200px;
         max-height: 200px;
+        box-sizing: border-box;
+        background-color: rgb(219, 219, 219);
+      
+
+        background-image: linear-gradient(to bottom, #e92121, #ffffff, #f5fcff, #ffffff, #ffffff, #ffffff,  #e1edee, #ff0404);
     }
 
     div {
@@ -35,8 +52,8 @@
     }
 
     button {
-        background-color: rgb(66, 182, 218);
-        padding: 6px;
+        background-color: rgb(66, 218, 66);
+        padding: 4px;
         border-radius: 6px;
         font-weight: 800;
         color: white;
