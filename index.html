@@ -15,7 +15,8 @@
                pomodoro
             </strong>
             <h1 id="timer">25:00</h1>
-            <strong>Time to study</strong><br>
+            <strong id="msg">Time to study</strong>
+            <hr>
             <button onclick="click_button(this)" class="buttton-study">START</button>
         </div>
     </main>
@@ -66,18 +67,50 @@
 </style>
 
 <script>
+
+
+    const messages = [
+        "Time to focus",
+        "Time for a break!"
+    ]
 class Clock {
     constructor() {
-        this.startDate =  new Date
-        
+      this.button = document.getElementById("buttton-study")
+      this.startTime("focus")
     }
 
+    startTime(state) {
+        this.startDate =  new Date
+        if ( state == "focus") {
+            this.targetDate = new Date(this.startDate.getTime() + 0.5 * 60 * 1000);
+            this.set_message(messages[0])
+        }else{
+            this.targetDate = new Date(this.startDate.getTime() + 5 * 60 * 1000);
+            this.set_message(messages[1])
+        }
+        this.state = state
+    }
     update_time() {
         var delta = Date.now() - this.startDate; // diferença em milissegundos
         var secs = new Date(delta).getSeconds();
         var hours = Math.floor(delta / 3600000); // total de horas decorridas
         secs = secs < 10 ? "0" + secs : secs; // adiciona um zero à esquerda, se necessário
         document.getElementById("timer").innerText = (hours).toString().padStart(2, "0") + ":" + secs;
+        if (  Date.now() >= this.targetDate ) {
+            if ( this.state == "focus") {
+                this.startTime("break")
+            }else{
+                this.startTime("focus")
+            }
+        }
+    }
+
+    set_message(msg) {
+        document.getElementById("msg").innerText = msg
+    }
+
+    set_button(msg) {
+
     }
 }
 
@@ -86,6 +119,7 @@ const clock = new Clock();
 
 function click_button(element) {
     element.classList.toggle("buttton-study")
+    clock.set_message(messages[1])
 }
 setInterval(() =>{
     clock.update_time()
